@@ -1,8 +1,14 @@
 #include<iostream>
 #include<string>
 #include<conio.h>
-using namespace std;
 
+/*
+
+Calcular el cobro por una multa
+
+*/
+
+using namespace std;
 int main() {
 
     int infraccion, x;

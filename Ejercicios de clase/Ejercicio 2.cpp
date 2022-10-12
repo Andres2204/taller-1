@@ -1,8 +1,10 @@
 #include<iostream>
 #include<conio.h>
 using namespace std;
+
     /* Calcular el valor total a pagar por los dos conceptos agua y energía; 
     el cobro se realiza según el siguiente plan de consumos y descuentos por es: */
+    
 float descuento(int es, float e12, float e34 ,float e56) {
     if ( es == 1 or es == 2) { return e12; }
     else if ( es == 3 or es == 4) { return e34; } 
