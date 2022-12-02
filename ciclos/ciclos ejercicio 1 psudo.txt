@@ -1,0 +1,64 @@
+
+/*
+PROBLEMA: 
+La facultad de ingenierías ha efectuado una prueba de admisión a un grupo
+de N de estudiantes y requiere que usted
+elabore un programa que obtenga los siguientes resultados:
+-Nombre de los 3 estudiantes con los puntajes más bajos. 
+-Puntaje máximo obtenido. 
+*/
+
+
+//variables globales
+Cadena nombre
+Dimension nombres[3] // array de cadenas, que puede contenener 3
+Real puntaje, mayorPuntaje = 0
+vector<Real> puntajes // Vector para almacenar los puntajes
+
+
+subProceso sacarPuntajes(Cadena nombre, Cadena nombres[3], Real puntaje, Real mayorPuntaje, vector<Real> puntajes) 
+    // --- CALCULO Y ORDENAMIENTO DE PUNTAJES ---
+    puntajes.push_back(puntaje)
+    mayorAMenor(puntajes) // ordenar de mayor a menor
+
+    // nombre segun posicion de puntaje
+    si (puntaje == puntajes[puntajes.size()-1])  //si el puntaje es el mas bajo de todos
+        nombres[2] = nombres[1]// mover 2do nombre al 3er opuesto
+        nombres[1] = nombres[0] // mover primer nombre a 2do puesto
+        nombres[0] = nombre // reemplazar primer nombre
+     sino si (puntaje == puntajes[puntajes.size()-2])  // si el puntaje es el segundo mas bajo
+        nombres[2] = nombres[1] // mover 2do nombre al 3er puesto
+        nombres[1] = nombre // reemplazar 2do nombre
+     sino si (puntaje == puntajes[puntajes.size()-3])  // si el puntaje es el tercero mas bajo
+        nombres[2] = nombre // reemplazar tercer nombre
+    finSi
+    finSi
+    finSi
+
+    // puntajes mayor
+    si (puntaje > mayorPuntaje) 
+        mayorPuntaje = puntaje
+    finSi
+finSubProceso
+
+
+INICIO 
+    Entero estudiantes // variable local
+    Escriba "Numero de estudiantes: " 
+    Lea estudiantes
+
+    Para i = 0 Hasta i<estudiantes incremento 1 Hacer
+        Escriba "Nombre del estudiante: " 
+        Lea nombre
+        Escriba "Puntaje: " 
+        Lea puntaje
+
+        sacarPuntajes(nombre,nombres,puntaje,mayorPuntaje, puntajes)
+         
+    finPara
+
+    Escriba "El mayor puntaje ha sido de: ", mayorPuntaje
+    Escriba "primer puntajes mas bajo: ", puntajes[puntajes.size()-1]," de " , nombres[0]
+    Escriba "segundo puntajes mas bajo: ", puntajes[puntajes.size()-2]," de " , nombres[1]
+    Escriba "tercer puntajes mas bajo: ", puntajes[puntajes.size()-3]," de " , nombres[2]
+FIN

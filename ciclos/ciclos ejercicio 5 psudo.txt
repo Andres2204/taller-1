@@ -1,0 +1,98 @@
+
+------ ENUNCIADO ------
+
+Un peaje desea implementar un programa que permita determinar en cualquier día de la semana lo siguiente: 
+-Total de vehículos particulares y total de vehículos públicos que cruzan el
+peaje.
+-Total de hombres y total de mujeres en vehículos particulares.
+-Total de hombres y total de mujeres en vehículos públicos.
+Realizar prueba escritorio.
+
+
+---------- CODIGO ----------
+
+SubProceso menu()
+    Escriba"\n1. Particular. \n"
+        "2. Publico. \n"
+        "Ingrese tipo de vehiculo: "
+FinSubProceso menu
+
+SubProceso personasVehiculo(Entero personas, Entero hombres, Entero mujeres ) {
+    Entero i // variables locales
+    Cadena genero
+    para i=0 hasta i<personas inceremento 1
+        Escriba"Genero <H>ombre <M>ujer: " Lea  genero
+        si(minusculas(genero)=="H") Entonces
+            hombres+=1
+        FinSi siNo si (minusculas(genero)=="m") Entonces
+            mujeres+=1
+        FinSi siNo 
+            Escriba"Dato incorrecto, intente de nuevo.";  i--  // repetir iteracion
+    FinPara
+    devolver personas, hombres, mujeres
+
+FinSubProceso personasVehiculo
+
+INICIO 
+    Entero tipoVehiculo, particulares=0, publicos=0, vehiculos // Datos de vehiculos
+    Entero partHombre=0, partMujer=0, publicHombre=0, publicMujer=0, personas // Contadores de personas
+
+    Escriba"Cantidad de vehiculos: " 
+    Lea vehiculos
+
+    Entero i // iterador
+    for(i = 0 i<vehiculosi++){
+        // llamar menu
+        menu()
+        Lea tipoVehiculo
+
+        Escriba"personas en el vehiculo: "
+        Lea personas
+
+        si(tipoVehiculo==1) Entonces
+            particulares++
+            personasVehiculo(personas, &partHombre, &partMujer)
+
+        FinSi siNo si(tipoVehiculo == 2) Entonces
+            publicos++
+            personasVehiculo(personas, &publicHombre, &publicMujer)
+
+        FinSi siNo 
+            Escriba "Dato incorrecto. "; i-- // repetir iteracion
+    }
+
+    Escriba"Vehiculos particulares: \n"
+        "Hombres: ", partHombre
+        "Mujeres: ", partMujer
+
+    Escriba"Vehiculos publicos: \n"
+        "Hombres: ", publicHombre
+        "Mujeres: ", publicMujer
+FIN
+
+---------- PRUEBA DE ESCRITORIO ----------
+Cantidad de vehiculos: 2
+
+1. Particular.
+2. Publico.
+Ingrese tipo de vehiculo: 1
+personas en el vehiculo: 3
+Genero <H>ombre <M>ujer: h
+Genero <H>ombre <M>ujer: h
+Genero <H>ombre <M>ujer: m
+
+1. Particular.
+2. Publico.
+Ingrese tipo de vehiculo: 2
+personas en el vehiculo: 5
+Genero <H>ombre <M>ujer: h
+Genero <H>ombre <M>ujer: h
+Genero <H>ombre <M>ujer: m
+Genero <H>ombre <M>ujer: m
+Genero <H>ombre <M>ujer: m
+Vehiculos particulares:
+Hombres: 2
+Mujeres: 1
+Vehiculos publicos:
+Hombres: 2
+Mujeres: 3
