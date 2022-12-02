@@ -56,8 +56,5 @@ int main() {
     }
     cout<<"El mayor consumo de agua fue: "<<mayorAgua<<endl;;
 
-
-    
-
     return 0;
 }
